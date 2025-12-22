@@ -1,9 +1,14 @@
 <mat-toolbar>
-    <button matIconButton aria-label="Example icon-button with menu icon" class="example-icon">
+    <button
+        matIconButton
+        aria-label="Example icon-button with menu icon"
+        class="example-icon"
+        (click)="onMenuClick($event)"
+    >
         <mat-icon>menu</mat-icon>
     </button>
-    <img alt="logo" class="logo" [src]="imgSrc" />
-    <h2>{{title}}</h2>
+    <img alt="logo" class="logo" [src]="applicationConfig().imgSrc" />
+    <h2>{{applicationConfig().title}}</h2>
     <span class="example-spacer"></span>
     <button
         matIconButton

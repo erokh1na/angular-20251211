@@ -1,11 +1,21 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {Header} from './main-components/header/header';
-import {ProductsList} from './pages/products-list/products-list';
+import {Sidenav} from './main-components/sidenav/sidenav';
 
 @Component({
     selector: 'app-root',
-    imports: [Header, ProductsList],
+    imports: [Header, Sidenav],
     templateUrl: './app.html',
     styleUrl: './app.css',
 })
-export class App {}
+export class App {
+    protected readonly title = 'angular-20251211';
+    protected readonly imgSrc = './favicon.ico';
+
+    public readonly sidenavOpenedStore = signal(true);
+
+    onMenuClick(event: Event) {
+        console.log('Listen menu click', event);
+        this.sidenavOpenedStore.update(isOpened => !isOpened);
+    }
+}

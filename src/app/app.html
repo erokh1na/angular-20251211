@@ -1,2 +1,38 @@
-<app-header></app-header>
-<app-products-list></app-products-list>
+<!-- <app-header
+    title="{{title}}"
+    imgSrc="{{imgSrc}}"
+></app-header> -->
+<!-- <app-header
+    [title]="title"
+    [imgSrc]="imgSrc"
+></app-header> -->
+
+<!-- <app-header
+    applicationConfig="{{
+        {
+            title: title,
+            imgSrc: imgSrc,
+        }
+    }}"
+></app-header> -->
+<app-header
+    [applicationConfig]="{
+        title: title,
+        imgSrc: imgSrc,
+    }"
+    (menuClick)="onMenuClick($event)"
+></app-header>
+<!-- 
+    (menuClick)="onMenuClick($event)"
+            |
+            V
+    HeaderComponent.menuClick.subscribe(($event) => {
+        onMenuClick($event)
+    })
+-->
+<app-sidenav
+    [sidenavOpened]="sidenavOpenedStore()"
+    (sidenavOpenedChange)="sidenavOpenedStore.set($event)"
+></app-sidenav>
+
+<!-- <app-products-list></app-products-list> -->
