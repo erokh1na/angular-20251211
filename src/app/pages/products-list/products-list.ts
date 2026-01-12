@@ -1,4 +1,4 @@
-import {Component, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {Card} from './card/card';
 import {productsMock} from '../../shared/products/products.mock';
 
@@ -7,6 +7,7 @@ import {productsMock} from '../../shared/products/products.mock';
     imports: [Card],
     templateUrl: './products-list.html',
     styleUrl: './products-list.css',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsList {
     readonly products = signal(productsMock);

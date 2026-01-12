@@ -1,4 +1,4 @@
-import {Component, input, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, output} from '@angular/core';
 import {
     MatCard,
     MatCardActions,
@@ -26,6 +26,7 @@ import {Product} from '../../../shared/products/product.type';
     ],
     templateUrl: './card.html',
     styleUrl: './card.css',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Card {
     readonly product = input.required<Product>();
