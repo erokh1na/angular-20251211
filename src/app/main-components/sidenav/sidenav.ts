@@ -1,4 +1,10 @@
-import {ChangeDetectionStrategy, Component, model} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    contentChild,
+    ElementRef,
+    viewChild,
+} from '@angular/core';
 import {MatButton} from '@angular/material/button';
 import {MatDrawer, MatDrawerContainer} from '@angular/material/sidenav';
 
@@ -10,5 +16,21 @@ import {MatDrawer, MatDrawerContainer} from '@angular/material/sidenav';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Sidenav {
-    public readonly sidenavOpened = model(false);
+    // public readonly sidenavOpened = model(false);
+
+    // private readonly drawerComponent = viewChild<MatDrawer>('drawer');
+    private readonly drawerComponent = viewChild.required<MatDrawer>(MatDrawer);
+    private readonly drawerElementRef = viewChild.required<MatDrawer, ElementRef<unknown>>(
+        MatDrawer,
+        {read: ElementRef},
+    );
+
+    private readonly divContentElement = contentChild<ElementRef>('divElement');
+
+    public toggle(): void {
+        this.drawerComponent().toggle();
+
+        console.log(this.drawerElementRef());
+        console.log(this.divContentElement());
+    }
 }

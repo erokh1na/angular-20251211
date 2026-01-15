@@ -1,12 +1,18 @@
 <mat-drawer-container autosize class="example-container">
-    <mat-drawer mode="side" class="example-sidenav" [opened]="sidenavOpened()">
-        <p>Auto-resizing sidenav</p>
-        <button matButton="elevated">Toggle extra text</button>
+    <mat-drawer #drawer mode="side" class="example-sidenav">
+        <!-- <ng-content select="h2"></ng-content> -->
+        <!-- <ng-content select="mat-list"></ng-content> -->
+        <!-- <ng-content select="[role='list']"></ng-content> -->
+        <!-- <ng-content select="div[drawer]"></ng-content> -->
+        <ng-content select="drawerContent"></ng-content>
     </mat-drawer>
 
-    <div class="example-sidenav-content">
-        <button type="button" matButton (click)="sidenavOpened.set(!sidenavOpened())">
+    <div #divElement class="example-sidenav-content">
+        <!-- <button #buttonElement type="button" matButton (click)="sidenavOpened.set(!sidenavOpened())"> -->
+        <!-- <button #buttonElement type="button" matButton (click)="drawer.toggle()"> -->
+        <!-- <button #buttonElement type="button" matButton (click)="toggle()">
             Toggle sidenav
-        </button>
+        </button> -->
+        <ng-content></ng-content>
     </div>
 </mat-drawer-container>
